@@ -12,14 +12,14 @@ import com.google.gson.annotations.SerializedName;
 
 import java.lang.annotation.Annotation;
 
-@Entity(tableName = "movie_table")
-public class MovieModel implements Parcelable, SerializedName {
+@Entity(tableName = "tv_table")
+public class TvModel implements SerializedName, Parcelable {
     @PrimaryKey()
     @SerializedName("id")
     @NonNull
     private int id;
 
-    @SerializedName("title")
+    @SerializedName("name")
     @ColumnInfo(name = "title")
     private String title;
 
@@ -27,7 +27,7 @@ public class MovieModel implements Parcelable, SerializedName {
     @ColumnInfo(name = "overview")
     private String overview;
 
-    @SerializedName("release_date")
+    @SerializedName("first_air_date")
     @ColumnInfo(name = "release_date")
     private String releseDate;
 
@@ -43,7 +43,7 @@ public class MovieModel implements Parcelable, SerializedName {
     @ColumnInfo(name = "vote_average")
     private double rating;
 
-    protected MovieModel(Parcel in) {
+    protected TvModel(Parcel in) {
         id = in.readInt();
         title = in.readString();
         overview = in.readString();
@@ -53,10 +53,23 @@ public class MovieModel implements Parcelable, SerializedName {
         rating = in.readDouble();
     }
 
+    public static final Creator<TvModel> CREATOR = new Creator<TvModel>() {
+        @Override
+        public TvModel createFromParcel(Parcel in) {
+            return new TvModel(in);
+        }
+
+        @Override
+        public TvModel[] newArray(int size) {
+            return new TvModel[size];
+        }
+    };
+
     @NonNull
     public int getId() {
         return id;
     }
+
 
     public void setId(@NonNull int id) {
         this.id = id;
@@ -110,17 +123,20 @@ public class MovieModel implements Parcelable, SerializedName {
         this.rating = rating;
     }
 
-    public static final Creator<MovieModel> CREATOR = new Creator<MovieModel>() {
-        @Override
-        public MovieModel createFromParcel(Parcel in) {
-            return new MovieModel(in);
-        }
+    @Override
+    public String value() {
+        return null;
+    }
 
-        @Override
-        public MovieModel[] newArray(int size) {
-            return new MovieModel[size];
-        }
-    };
+    @Override
+    public String[] alternate() {
+        return new String[0];
+    }
+
+    @Override
+    public Class<? extends Annotation> annotationType() {
+        return null;
+    }
 
     @Override
     public int describeContents() {
@@ -137,19 +153,5 @@ public class MovieModel implements Parcelable, SerializedName {
         parcel.writeString(backdrop);
         parcel.writeDouble(rating);
     }
-
-    @Override
-    public String value() {
-        return null;
-    }
-
-    @Override
-    public String[] alternate() {
-        return new String[0];
-    }
-
-    @Override
-    public Class<? extends Annotation> annotationType() {
-        return null;
-    }
 }
+

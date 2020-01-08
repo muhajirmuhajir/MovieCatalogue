@@ -1,11 +1,10 @@
-package piuwcreative.moviecatalogue.ui.activities;
+package piuwcreative.moviecatalogue.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,9 +13,10 @@ import androidx.fragment.app.Fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import piuwcreative.moviecatalogue.R;
-import piuwcreative.moviecatalogue.ui.fragments.FavoriteFragment;
-import piuwcreative.moviecatalogue.ui.fragments.MoviesFragment;
-import piuwcreative.moviecatalogue.ui.fragments.TvShowFragment;
+import piuwcreative.moviecatalogue.ui.favorite.FavoriteFragment;
+import piuwcreative.moviecatalogue.ui.movie.MovieFragment;
+import piuwcreative.moviecatalogue.ui.settings.SettingsActivity;
+import piuwcreative.moviecatalogue.ui.tvshow.TvShowFragment;
 
 public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavigationView;
@@ -26,6 +26,26 @@ public class MainActivity extends AppCompatActivity {
 
 
     Fragment active;
+    private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
+        @Override
+        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+            switch (menuItem.getItemId()) {
+                case R.id.navigation_movies:
+                    getSupportFragmentManager().beginTransaction().hide(active).show(fragmentMovies).commit();
+                    active = fragmentMovies;
+                    return true;
+                case R.id.navigation_tvshow:
+                    getSupportFragmentManager().beginTransaction().hide(active).show(fragmentTv).commit();
+                    active = fragmentTv;
+                    return true;
+                case R.id.navigation_favorite:
+                    getSupportFragmentManager().beginTransaction().hide(active).show(fragmentFavorite).commit();
+                    active = fragmentFavorite;
+                    return true;
+            }
+            return false;
+        }
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         } else if (fragmentMovies == null) {
-            fragmentMovies = new MoviesFragment();
+            fragmentMovies = new MovieFragment();
             fragmentTv = new TvShowFragment();
             fragmentFavorite = new FavoriteFragment();
 
@@ -73,27 +93,6 @@ public class MainActivity extends AppCompatActivity {
         return fragmentMovies;
     }
 
-    private BottomNavigationView.OnNavigationItemSelectedListener onNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {
-        @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-            switch (menuItem.getItemId()) {
-                case R.id.navigation_movies:
-                    getSupportFragmentManager().beginTransaction().hide(active).show(fragmentMovies).commit();
-                    active = fragmentMovies;
-                    return true;
-                case R.id.navigation_tvshow:
-                    getSupportFragmentManager().beginTransaction().hide(active).show(fragmentTv).commit();
-                    active = fragmentTv;
-                    return true;
-                case R.id.navigation_favorite:
-                    getSupportFragmentManager().beginTransaction().hide(active).show(fragmentFavorite).commit();
-                    active = fragmentFavorite;
-                    return true;
-            }
-            return false;
-        }
-    };
-
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
@@ -110,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
 
         if (item.getItemId() == R.id.settings) {
-            Intent intent = new Intent(Settings.ACTION_LOCALE_SETTINGS);
+            Intent intent = new Intent(this, SettingsActivity.class);
             startActivity(intent);
         }
 

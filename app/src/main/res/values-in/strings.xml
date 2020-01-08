@@ -15,4 +15,7 @@
 
     <string name="no_favorite_movie">Tidak ada film favorit</string>
     <string name="no_favorite_tv">Tidak ada tv favorit</string>
+    <string name="ubah_bahasa">Ubah Bahasa</string>
+    <string name="new_film">Nyalakan notifikiasi film baru</string>
+    <string name="daily_reminder">Pengingat tiap hari</string>
 </resources>

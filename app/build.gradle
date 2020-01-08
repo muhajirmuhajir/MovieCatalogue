@@ -32,15 +32,20 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
     implementation 'androidx.cardview:cardview:1.0.0'
     implementation 'androidx.navigation:navigation-fragment:2.1.0'
     implementation 'androidx.navigation:navigation-ui:2.1.0'
 
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-alpha04'
-    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.2.0-alpha04'
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0-rc03'
+    annotationProcessor 'androidx.lifecycle:lifecycle-compiler:2.2.0-rc03'
 
-    implementation 'com.loopj.android:android-async-http:1.4.9'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+
     implementation 'com.squareup.picasso:picasso:2.71828'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.6.0'
+
+    implementation "android.arch.persistence.room:runtime:1.1.1"
+    annotationProcessor "android.arch.persistence.room:compiler:1.1.1"
 }

@@ -17,6 +17,9 @@
     <string name="favorite">Favorite</string>
     <string name="no_favorite_movie">No Favorite Movie</string>
     <string name="no_favorite_tv">No Favorite Tv Show</string>
+    <string name="ubah_bahasa">Change Language</string>
+    <string name="new_film">Turn on new film notification</string>
+    <string name="daily_reminder">Daily reminder</string>
 
 
 </resources>

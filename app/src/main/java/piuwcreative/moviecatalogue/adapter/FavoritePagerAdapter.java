@@ -10,11 +10,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
 import piuwcreative.moviecatalogue.R;
-import piuwcreative.moviecatalogue.ui.fragments.FavoriteMoviesFragment;
-import piuwcreative.moviecatalogue.ui.fragments.FavoriteTvFragment;
+import piuwcreative.moviecatalogue.ui.favorite.movie.FavoriteMovieFragment;
+import piuwcreative.moviecatalogue.ui.favorite.tvshow.FavoriteTvFragment;
 
 public class FavoritePagerAdapter extends FragmentPagerAdapter {
     private Context context;
+
     public FavoritePagerAdapter(@NonNull FragmentManager fm, Context context) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
         this.context = context;
@@ -25,11 +26,11 @@ public class FavoritePagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new FavoriteMoviesFragment();
-            case 1 :
+                return new FavoriteMovieFragment();
+            case 1:
                 return new FavoriteTvFragment();
         }
-        return new FavoriteMoviesFragment();
+        return new FavoriteMovieFragment();
     }
 
     @StringRes
