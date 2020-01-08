@@ -16,25 +16,45 @@ import retrofit2.Response;
 
 public class MovieRepository {
     private static MovieRepository instance;
+    private MutableLiveData<ArrayList<MovieModel>> movies;
+    private MutableLiveData<ArrayList<MovieModel>> searchMovies;
+    private MutableLiveData<ArrayList<TvModel>> tvShows;
 
     public static MovieRepository getInstance(){
         if (instance == null) {
             instance = new MovieRepository();
         }
-
         return instance;
     }
 
     public MovieRepository() {
+        movies = new MutableLiveData<>();
+        searchMovies = new MutableLiveData<>();
+        tvShows = new MutableLiveData<>();
+    }
+
+    public LiveData<ArrayList<MovieModel>> getSearchMovie(String query) {
+        ApiMovieService.Api.getService().getMovieSearch(query).enqueue(new Callback<MovieResponse>() {
+            @Override
+            public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    searchMovies.postValue(response.body().getResult());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<MovieResponse> call, Throwable t) {
+
+            }
+        });
+        return searchMovies;
     }
 
     public LiveData<ArrayList<MovieModel>> getAllMovie() {
-        final MutableLiveData<ArrayList<MovieModel>> movies = new MutableLiveData<>();
-
         ApiMovieService.Api.getService().getAllMovie().enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                if (response.isSuccessful()) {
+                if (response.isSuccessful() && response.body() != null) {
                     movies.postValue(response.body().getResult());
                 }
             }
@@ -50,8 +70,6 @@ public class MovieRepository {
     }
 
     public LiveData<ArrayList<TvModel>> getAllTvShow() {
-        final MutableLiveData<ArrayList<TvModel>> tvShows = new MutableLiveData<>();
-
         ApiMovieService.Api.getService().getAllTvShow().enqueue(new Callback<TvResponse>() {
             @Override
             public void onResponse(Call<TvResponse> call, Response<TvResponse> response) {

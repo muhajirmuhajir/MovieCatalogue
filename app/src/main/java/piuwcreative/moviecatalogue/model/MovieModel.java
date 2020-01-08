@@ -6,6 +6,7 @@ import android.os.Parcelable;
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
 import androidx.room.Entity;
+import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
@@ -42,6 +43,20 @@ public class MovieModel implements Parcelable, SerializedName {
     @SerializedName("vote_average")
     @ColumnInfo(name = "vote_average")
     private double rating;
+
+    public MovieModel() {
+    }
+
+    @Ignore
+    public MovieModel(int id, String title, String overview, String releseDate, String poster, String backdrop, double rating) {
+        this.id = id;
+        this.title = title;
+        this.overview = overview;
+        this.releseDate = releseDate;
+        this.poster = poster;
+        this.backdrop = backdrop;
+        this.rating = rating;
+    }
 
     protected MovieModel(Parcel in) {
         id = in.readInt();

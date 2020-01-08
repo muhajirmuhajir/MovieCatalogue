@@ -8,12 +8,13 @@ import androidx.annotation.StringRes;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import piuwcreative.moviecatalogue.R;
 import piuwcreative.moviecatalogue.ui.favorite.movie.FavoriteMovieFragment;
 import piuwcreative.moviecatalogue.ui.favorite.tvshow.FavoriteTvFragment;
 
-public class FavoritePagerAdapter extends FragmentPagerAdapter {
+public class FavoritePagerAdapter extends FragmentStatePagerAdapter {
     private Context context;
 
     public FavoritePagerAdapter(@NonNull FragmentManager fm, Context context) {

@@ -1,21 +1,32 @@
 package piuwcreative.moviecatalogue.ui.movie;
 
+import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
+import java.util.ArrayList;
+
 import piuwcreative.moviecatalogue.data.repository.MovieRepository;
+import piuwcreative.moviecatalogue.model.MovieModel;
 
 
 public class MovieViewModel extends ViewModel {
-    private OnMovieLoad callback;
 
+    private LiveData<ArrayList<MovieModel>> allMovie;
+    private MovieRepository movieRepository;
 
     public void init(OnMovieLoad callback) {
-        this.callback = callback;
         callback.onStarted();
+        movieRepository = MovieRepository.getInstance();
     }
 
-    public void getAllMovie() {
-        MovieRepository movieRepository = MovieRepository.getInstance();
-        callback.onSuccess(movieRepository.getAllMovie());
+    private void setAllMovie() {
+        this.allMovie = movieRepository.getAllMovie();
+    }
+
+    public LiveData<ArrayList<MovieModel>> getAllMovie() {
+        if (allMovie == null) {
+            setAllMovie();
+        }
+        return allMovie;
     }
 }

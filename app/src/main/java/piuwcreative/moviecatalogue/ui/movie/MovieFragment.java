@@ -10,7 +10,6 @@ import android.widget.ProgressBar;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.LiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -21,7 +20,6 @@ import java.util.ArrayList;
 import piuwcreative.moviecatalogue.R;
 import piuwcreative.moviecatalogue.adapter.MovieAdapter;
 import piuwcreative.moviecatalogue.model.MovieModel;
-import piuwcreative.moviecatalogue.ui.MainActivity;
 
 
 /**
@@ -57,28 +55,29 @@ public class MovieFragment extends Fragment implements OnMovieLoad {
         adapter = new MovieAdapter();
         recyclerView.setAdapter(adapter);
 
-        movieViewModel = new ViewModelProvider(this, new ViewModelProvider.NewInstanceFactory()).get(MovieViewModel.class);
-        movieViewModel.init(this);
-        movieViewModel.getAllMovie();
+        if (getActivity() != null) {
+            movieViewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(MovieViewModel.class);
+            if (savedInstanceState == null) {
+                movieViewModel.init(this);
+            }
+            movieViewModel.getAllMovie().observe(getActivity(), observer);
+        }
 
     }
 
+    private Observer<ArrayList<MovieModel>> observer = new Observer<ArrayList<MovieModel>>() {
+        @Override
+        public void onChanged(ArrayList<MovieModel> models) {
+            adapter.setMovieModels(models);
+            showLoading(false);
+        }
+    };
 
     @Override
     public void onStarted() {
         showLoading(true);
     }
 
-    @Override
-    public void onSuccess(LiveData<ArrayList<MovieModel>> movies) {
-        movies.observe(this, new Observer<ArrayList<MovieModel>>() {
-            @Override
-            public void onChanged(ArrayList<MovieModel> models) {
-                adapter.setMovieModels(models);
-                showLoading(false);
-            }
-        });
-    }
 
     private void showLoading(boolean state) {
         if (state) {
@@ -87,4 +86,5 @@ public class MovieFragment extends Fragment implements OnMovieLoad {
             progressBar.setVisibility(View.GONE);
         }
     }
+
 }

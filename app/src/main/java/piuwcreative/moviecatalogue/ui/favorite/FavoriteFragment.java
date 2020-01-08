@@ -21,7 +21,7 @@ import piuwcreative.moviecatalogue.adapter.FavoritePagerAdapter;
  * A simple {@link Fragment} subclass.
  */
 public class FavoriteFragment extends Fragment {
-
+    private ViewPager viewPager;
 
     public FavoriteFragment() {
         // Required empty public constructor
@@ -40,13 +40,31 @@ public class FavoriteFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         TabLayout tabLayout = view.findViewById(R.id.tab_layout);
-        ViewPager viewPager = view.findViewById(R.id.viewpager);
+        viewPager = view.findViewById(R.id.viewpager);
 
-        FragmentManager fm = getFragmentManager();
+        FragmentManager fm = getParentFragmentManager();
         FavoritePagerAdapter adapter = new FavoritePagerAdapter(fm, getContext());
 
         viewPager.setAdapter(adapter);
-        tabLayout.setupWithViewPager(viewPager);
+        tabLayout.addOnTabSelectedListener(callback);
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
     }
+
+    TabLayout.OnTabSelectedListener callback = new TabLayout.OnTabSelectedListener() {
+        @Override
+        public void onTabSelected(TabLayout.Tab tab) {
+            viewPager.setCurrentItem(tab.getPosition());
+        }
+
+        @Override
+        public void onTabUnselected(TabLayout.Tab tab) {
+
+        }
+
+        @Override
+        public void onTabReselected(TabLayout.Tab tab) {
+
+        }
+    };
 }
