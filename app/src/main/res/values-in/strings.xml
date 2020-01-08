@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Catalog Film</string>
+    <string name="decription">Once home to the most advanced civilization on Earth, Atlantis is now an underwater kingdom ruled by the power-hungry King Orm. With a vast army at his disposal, Orm plans to conquer the remaining oceanic people and then the surface world. Standing in his way is Arthur Curry, Orm\'s half-human, half-Atlantean brother and true heir to the throne.</string>
+    <string name="genres">Genre</string>
+
+    <string name="movie">Film</string>
+    <string name="tvShow">Acara Tv</string>
+
+    <string name="tahun_rilis">Tanggal Rilis</string>
+    <string name="sutradara">Rating</string>
+    <string name="sinopsis">Sinopsis</string>
+
+    <string name="favorite">Favorit</string>
+
+    <string name="no_favorite_movie">Tidak ada film favorit</string>
+    <string name="no_favorite_tv">Tidak ada tv favorit</string>
+</resources>
