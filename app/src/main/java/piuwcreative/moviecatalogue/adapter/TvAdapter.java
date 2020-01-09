@@ -16,24 +16,24 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import piuwcreative.moviecatalogue.R;
-import piuwcreative.moviecatalogue.model.MovieModel;
+import piuwcreative.moviecatalogue.model.TvModel;
 import piuwcreative.moviecatalogue.ui.detail.DetailActivity;
 
 import static piuwcreative.moviecatalogue.ui.detail.DetailActivity.EXTRA_DATA;
 import static piuwcreative.moviecatalogue.ui.detail.DetailActivity.EXTRA_TYPE;
 import static piuwcreative.moviecatalogue.utils.Const.BASE_IMAGE_URL;
 
-public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
-    private static final String TYPE = "movie";
-    private ArrayList<MovieModel> movieModels = new ArrayList<>();
+public class TvAdapter extends RecyclerView.Adapter<TvAdapter.ViewHolder> {
+    private static final String TYPE = "tv";
+    private ArrayList<TvModel> models = new ArrayList<>();
     private Context context;
 
-    public MovieAdapter(Context context) {
+    public TvAdapter(Context context) {
         this.context = context;
     }
 
-    public void setMovieModels(ArrayList<MovieModel> movieModels) {
-        this.movieModels = movieModels;
+    public void setModels(ArrayList<TvModel> models) {
+        this.models = models;
     }
 
     @NonNull
@@ -45,7 +45,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.bind(movieModels.get(position));
+        holder.bind(models.get(position));
 
         final int positionAt = holder.getAdapterPosition();
 
@@ -53,7 +53,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(context, DetailActivity.class);
-                intent.putExtra(EXTRA_DATA, movieModels.get(positionAt));
+                intent.putExtra(EXTRA_DATA, models.get(positionAt));
                 intent.putExtra(EXTRA_TYPE, TYPE);
                 context.startActivity(intent);
             }
@@ -62,12 +62,13 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return movieModels.size();
+        return models.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         private TextView title, description;
         private ImageView poster;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title_movie);
@@ -75,10 +76,10 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             description = itemView.findViewById(R.id.tv_description);
         }
 
-        public void bind(MovieModel model) {
+        public void bind(TvModel model) {
             title.setText(model.getTitle());
             description.setText(model.getOverview());
-            Picasso.get().load(BASE_IMAGE_URL+model.getPoster()).into(poster);
+            Picasso.get().load(BASE_IMAGE_URL + model.getPoster()).into(poster);
         }
     }
 }

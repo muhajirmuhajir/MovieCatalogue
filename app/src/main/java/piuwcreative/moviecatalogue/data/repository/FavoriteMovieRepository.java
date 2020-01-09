@@ -1,12 +1,10 @@
 package piuwcreative.moviecatalogue.data.repository;
 
 import android.app.Application;
-import android.database.Cursor;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 import piuwcreative.moviecatalogue.data.database.AppDatabase;

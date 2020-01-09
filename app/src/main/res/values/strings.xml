@@ -9,17 +9,27 @@
 
     <string name="tahun_rilis">Release Date </string>
     <string name="sutradara">Ratings</string>
-    <string name="sinopsis">Overview</string>
+    <string name="sinopsis">OVERVIEW</string>
     <string name="genres">Genres</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
 
     <string name="favorite">Favorite</string>
     <string name="no_favorite_movie">No Favorite Movie</string>
     <string name="no_favorite_tv">No Favorite Tv Show</string>
     <string name="ubah_bahasa">Change Language</string>
-    <string name="new_film">Turn on new film notification</string>
-    <string name="daily_reminder">Daily reminder</string>
+    <string name="new_film">New film notification</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="movie_discovery">Movie Discovery</string>
+    <string name="tv_show_discovery">Tv Show Discovery</string>
+
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
+    <string name="daily_description">if activated then you will receive notification to open each application at 7 am</string>
+    <string name="new_film_desc">if activated then you will receive
+Latest film notifications every
+8 o\'clock in the morning</string>
+    <string name="release_date">Release date</string>
+    <string name="rating">Rating</string>
 
 
 </resources>

@@ -1,54 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:paddingTop="10dp"
-    android:elevation="2dp"
-    android:background="@color/white"
-    android:layout_height="wrap_content">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:background="@android:color/white"
+    android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
-        app:cardCornerRadius="10dp"
-        android:layout_height="wrap_content">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:elevation="0dp"
+        app:cardCornerRadius="8dp"
+        app:cardElevation="0dp">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:padding="10dp"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:id="@+id/img_poster"
-                android:layout_width="100dp"
-                android:layout_height="130dp"
-                android:scaleType="fitXY"
-                android:adjustViewBounds="true"
-                android:src="@drawable/poster_preman"/>
-
-            <LinearLayout
-                android:layout_marginLeft="10dp"
-                android:layout_toRightOf="@id/img_poster"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/title_movie"
-                    android:textColor="#000"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Judul Film"
-                    android:textSize="28sp"/>
-                <TextView
-                    android:id="@+id/tv_description"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/decription"
-                    android:maxLines="4"
-                    android:ellipsize="end"/>
-            </LinearLayout>
-        </LinearLayout>
-
+        <ImageView
+            android:id="@+id/img_poster"
+            android:layout_width="88dp"
+            android:layout_height="121dp"
+            android:adjustViewBounds="true"
+            android:elevation="0dp"
+            android:scaleType="fitXY"
+            android:src="@color/colorAccent" />
     </androidx.cardview.widget.CardView>
 
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="18dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/title_movie"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_medium"
+            android:text="Judul Film"
+            android:textColor="#000"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tv_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/roboto_light"
+            android:maxLines="5"
+            android:text="@string/decription"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>

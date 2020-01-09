@@ -52,7 +52,7 @@ public class MovieFragment extends Fragment implements OnMovieLoad {
 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new MovieAdapter();
+        adapter = new MovieAdapter(getContext());
         recyclerView.setAdapter(adapter);
 
         if (getActivity() != null) {

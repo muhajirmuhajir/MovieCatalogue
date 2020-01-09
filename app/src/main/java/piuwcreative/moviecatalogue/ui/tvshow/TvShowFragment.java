@@ -5,19 +5,31 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
 
 import piuwcreative.moviecatalogue.R;
+import piuwcreative.moviecatalogue.adapter.MovieAdapter;
+import piuwcreative.moviecatalogue.adapter.TvAdapter;
+import piuwcreative.moviecatalogue.model.TvModel;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TvShowFragment extends Fragment {
-
+public class TvShowFragment extends Fragment implements OnTvLoad{
+    private TvShowViewModel viewModel;
+    private TvAdapter adapter;
+    private ProgressBar progressBar;
 
     public TvShowFragment() {
         // Required empty public constructor
@@ -35,7 +47,41 @@ public class TvShowFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        progressBar = view.findViewById(R.id.progressBar);
+        RecyclerView recyclerView = view.findViewById(R.id.rv_container);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new TvAdapter(getContext());
+        recyclerView.setAdapter(adapter);
+
+        if (getActivity() != null) {
+            viewModel = new ViewModelProvider(getActivity(), new ViewModelProvider.NewInstanceFactory()).get(TvShowViewModel.class);
+            if (savedInstanceState == null) {
+                viewModel.init(this);
+            }
+            viewModel.getAllTv().observe(getActivity(), observer);
+        }
 
     }
 
+    private Observer<ArrayList<TvModel>> observer = new Observer<ArrayList<TvModel>>() {
+        @Override
+        public void onChanged(ArrayList<TvModel> tvModels) {
+            adapter.setModels(tvModels);
+            showLoading(false);
+        }
+    };
+
+    @Override
+    public void onStarted() {
+        showLoading(true);
+    }
+
+    private void showLoading(boolean state) {
+        if (state) {
+            progressBar.setVisibility(View.VISIBLE);
+        } else {
+            progressBar.setVisibility(View.GONE);
+        }
+    }
 }

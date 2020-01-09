@@ -1,8 +1,6 @@
 package piuwcreative.moviecatalogue.ui;
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -14,7 +12,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import piuwcreative.moviecatalogue.R;
 import piuwcreative.moviecatalogue.ui.favorite.FavoriteFragment;
 import piuwcreative.moviecatalogue.ui.movie.MovieFragment;
-import piuwcreative.moviecatalogue.ui.settings.SettingsActivity;
+import piuwcreative.moviecatalogue.ui.search.SearchFragment;
+import piuwcreative.moviecatalogue.ui.settings.SettingsFragment;
 import piuwcreative.moviecatalogue.ui.tvshow.TvShowFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,9 +36,19 @@ public class MainActivity extends AppCompatActivity {
                         setFragment(new TvShowFragment());
                     }
                     return true;
+                case R.id.navigation_search:
+                    if (menuItem.getItemId() != bottomNavigationView.getSelectedItemId()) {
+                        setFragment(new SearchFragment());
+                    }
+                    return true;
                 case R.id.navigation_favorite:
                     if (menuItem.getItemId() != bottomNavigationView.getSelectedItemId()) {
                         setFragment(new FavoriteFragment());
+                    }
+                    return true;
+                case R.id.navigation_settings:
+                    if (menuItem.getItemId() != bottomNavigationView.getSelectedItemId()) {
+                        setFragment(new SettingsFragment());
                     }
                     return true;
             }
@@ -74,20 +83,7 @@ public class MainActivity extends AppCompatActivity {
         getSupportFragmentManager().putFragment(outState, FRAGMENT_TAG, active);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.settings_menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.settings) {
-            Intent intent = new Intent(this, SettingsActivity.class);
-            startActivity(intent);
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     private void setFragment(Fragment fragment) {
         this.active = fragment;

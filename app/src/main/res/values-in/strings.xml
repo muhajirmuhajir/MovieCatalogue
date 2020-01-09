@@ -9,13 +9,25 @@
 
     <string name="tahun_rilis">Tanggal Rilis</string>
     <string name="sutradara">Rating</string>
-    <string name="sinopsis">Sinopsis</string>
+    <string name="sinopsis">SINOPSIS</string>
 
     <string name="favorite">Favorit</string>
 
     <string name="no_favorite_movie">Tidak ada film favorit</string>
     <string name="no_favorite_tv">Tidak ada tv favorit</string>
     <string name="ubah_bahasa">Ubah Bahasa</string>
-    <string name="new_film">Nyalakan notifikiasi film baru</string>
+    <string name="new_film">Pemberitahuan film baru</string>
     <string name="daily_reminder">Pengingat tiap hari</string>
+    <string name="movie_discovery">Daftar Film</string>
+    <string name="tv_show_discovery">Daftar Acara Tv</string>
+    <string name="search">Cari</string>
+    <string name="settings">Pengaturan</string>
+    <string name="daily_description">jika diaktifkan maka anda akan menerima
+notifikasi untuk membuka aplikasi setiap
+jam 7 pagi</string>
+    <string name="new_film_desc">jika diaktifkan maka anda akan menerima
+notifikasi film terbaru setiap
+jam 8 pagi</string>
+    <string name="release_date">Waktu rilis</string>
+    <string name="rating">Peringkat</string>
 </resources>

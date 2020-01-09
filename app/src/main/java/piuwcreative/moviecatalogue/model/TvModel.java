@@ -44,11 +44,15 @@ public class TvModel implements SerializedName, Parcelable {
     @ColumnInfo(name = "vote_average")
     private double rating;
 
+    @SerializedName("vote_count")
+    @ColumnInfo(name = "vote_count")
+    private int voteCount;
+
     public TvModel() {
     }
 
     @Ignore
-    public TvModel(int id, String title, String overview, String releseDate, String poster, String backdrop, double rating) {
+    public TvModel(int id, String title, String overview, String releseDate, String poster, String backdrop, double rating, int voteCount) {
         this.id = id;
         this.title = title;
         this.overview = overview;
@@ -56,6 +60,7 @@ public class TvModel implements SerializedName, Parcelable {
         this.poster = poster;
         this.backdrop = backdrop;
         this.rating = rating;
+        this.voteCount = voteCount;
     }
 
     protected TvModel(Parcel in) {
@@ -66,6 +71,7 @@ public class TvModel implements SerializedName, Parcelable {
         poster = in.readString();
         backdrop = in.readString();
         rating = in.readDouble();
+        voteCount = in.readInt();
     }
 
     public static final Creator<TvModel> CREATOR = new Creator<TvModel>() {
@@ -138,6 +144,14 @@ public class TvModel implements SerializedName, Parcelable {
         this.rating = rating;
     }
 
+    public int getVoteCount() {
+        return voteCount;
+    }
+
+    public void setVoteCount(int voteCount) {
+        this.voteCount = voteCount;
+    }
+
     @Override
     public String value() {
         return null;
@@ -167,6 +181,7 @@ public class TvModel implements SerializedName, Parcelable {
         parcel.writeString(poster);
         parcel.writeString(backdrop);
         parcel.writeDouble(rating);
+        parcel.writeInt(voteCount);
     }
 }
 
