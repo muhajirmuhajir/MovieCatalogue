@@ -35,10 +35,10 @@ public interface DatabaseDao {
     LiveData<List<TvModel>> getAllTv();
 
     @Query("SELECT * FROM MOVIE_TABLE WHERE id = :id")
-    LiveData<MovieModel> getMovieById(int id);
+    MovieModel getMovieById(int id);
 
     @Query("SELECT * FROM TV_TABLE WHERE id = :id")
-    LiveData<TvModel> getTvShowById(int id);
+    TvModel getTvShowById(int id);
 
     @Query("SELECT * FROM MOVIE_TABLE WHERE title LIKE :title")
     LiveData<List<MovieModel>> getMovieByTitle(String title);

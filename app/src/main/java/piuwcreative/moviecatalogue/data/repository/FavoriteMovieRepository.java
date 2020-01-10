@@ -42,8 +42,8 @@ public class FavoriteMovieRepository {
         new DeleteMovieAsyncTask(databaseDao).execute(model);
     }
 
-    public void findMovie(int id) {
-
+    public MovieModel findMovie(int id) {
+        return databaseDao.getMovieById(id);
     }
 
     public void insertTv(TvModel model) {
@@ -55,7 +55,7 @@ public class FavoriteMovieRepository {
         new DeleteTvAsyncTask(databaseDao).execute(model);
     }
 
-    public LiveData<TvModel> findTv(int id) {
+    public TvModel findTv(int id) {
         return databaseDao.getTvShowById(id);
     }
 
