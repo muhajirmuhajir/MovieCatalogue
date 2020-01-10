@@ -52,4 +52,5 @@ dependencies {
     implementation 'androidx.preference:preference:1.1.0'
 
     implementation 'us.belka:androidtoggleswitch:1.2.2'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
 }

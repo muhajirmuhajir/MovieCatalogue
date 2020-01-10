@@ -15,6 +15,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
+
 import java.util.ArrayList;
 
 import piuwcreative.moviecatalogue.R;
@@ -26,7 +28,7 @@ import piuwcreative.moviecatalogue.model.MovieModel;
  * A simple {@link Fragment} subclass.
  */
 public class MovieFragment extends Fragment implements OnMovieLoad {
-    private ProgressBar progressBar;
+    private ShimmerFrameLayout shimmerFrameLayout;
     private MovieAdapter adapter;
     private MovieViewModel movieViewModel;
 
@@ -47,7 +49,7 @@ public class MovieFragment extends Fragment implements OnMovieLoad {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        progressBar = view.findViewById(R.id.progressBar);
+        shimmerFrameLayout = view.findViewById(R.id.shimmer_layout);
         RecyclerView recyclerView = view.findViewById(R.id.rv_container);
 
 
@@ -81,9 +83,11 @@ public class MovieFragment extends Fragment implements OnMovieLoad {
 
     private void showLoading(boolean state) {
         if (state) {
-            progressBar.setVisibility(View.VISIBLE);
+            shimmerFrameLayout.setVisibility(View.VISIBLE);
+            shimmerFrameLayout.startShimmer();
         } else {
-            progressBar.setVisibility(View.GONE);
+            shimmerFrameLayout.stopShimmer();
+            shimmerFrameLayout.setVisibility(View.GONE);
         }
     }
 

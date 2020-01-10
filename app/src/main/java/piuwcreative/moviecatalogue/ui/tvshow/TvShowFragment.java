@@ -15,6 +15,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.facebook.shimmer.ShimmerFrameLayout;
+
 import java.util.ArrayList;
 
 import piuwcreative.moviecatalogue.R;
@@ -29,7 +31,7 @@ import piuwcreative.moviecatalogue.model.TvModel;
 public class TvShowFragment extends Fragment implements OnTvLoad{
     private TvShowViewModel viewModel;
     private TvAdapter adapter;
-    private ProgressBar progressBar;
+    private ShimmerFrameLayout shimmerFrameLayout;
 
     public TvShowFragment() {
         // Required empty public constructor
@@ -47,7 +49,7 @@ public class TvShowFragment extends Fragment implements OnTvLoad{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        progressBar = view.findViewById(R.id.progressBar);
+        shimmerFrameLayout = view.findViewById(R.id.shimmer_layout);
         RecyclerView recyclerView = view.findViewById(R.id.rv_container);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -79,9 +81,11 @@ public class TvShowFragment extends Fragment implements OnTvLoad{
 
     private void showLoading(boolean state) {
         if (state) {
-            progressBar.setVisibility(View.VISIBLE);
+            shimmerFrameLayout.setVisibility(View.VISIBLE);
+            shimmerFrameLayout.startShimmer();
         } else {
-            progressBar.setVisibility(View.GONE);
+            shimmerFrameLayout.setVisibility(View.GONE);
+            shimmerFrameLayout.stopShimmer();
         }
     }
 }

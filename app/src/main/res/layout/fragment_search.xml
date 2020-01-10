@@ -1,14 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:custom="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".ui.search.SearchFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.appcompat.widget.SearchView
+        custom:queryHint="@string/search_hint"
+        android:id="@+id/search_badge"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="search fragment" />
+        android:layout_height="wrap_content" />
 
-</FrameLayout>
+    <belka.us.androidtoggleswitch.widgets.ToggleSwitch
+        android:id="@+id/toggle_switches"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/search_badge"
+        android:layout_centerHorizontal="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        custom:textToggleLeft="@string/movie"
+        custom:toggleWidth="100dp"
+        custom:textToggleRight="@string/tvShow"
+        custom:activeBgColor="@color/colorPrimaryDark"
+        custom:inactiveBgColor="@color/grey"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/toggle_switches"
+        android:layout_marginTop="10dp"
+        android:id="@+id/rv_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</RelativeLayout>
