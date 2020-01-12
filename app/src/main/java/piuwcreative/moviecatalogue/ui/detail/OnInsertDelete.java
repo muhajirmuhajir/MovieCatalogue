@@ -5,4 +5,5 @@ public interface OnInsertDelete {
 
     void deleteSuccess();
 
+    void onFinish();
 }

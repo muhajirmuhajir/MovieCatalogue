@@ -107,7 +107,7 @@
                             android:id="@+id/tv_rating"
                             android:layout_marginStart="16dp"
                             android:fontFamily="@font/roboto_light"
-                            android:text="@{String.valueOf(viewModel.movie.rating ) ?? String.valueOf(viewModel.tvShow.rating)}"
+                            android:text="@{viewModel.movie != null ? String.valueOf(viewModel.movie.rating ) : String.valueOf(viewModel.tvShow.rating)}"
                             android:textSize="12sp" />
                     </TableRow>
                 </TableLayout>
@@ -129,7 +129,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_medium"
-                    android:text="@{String.valueOf(viewModel.movie.rating ) ?? String.valueOf(viewModel.tvShow.rating)}"
+                    android:text="@{viewModel.movie != null ? String.valueOf(viewModel.movie.rating ) : String.valueOf(viewModel.tvShow.rating)}"
                     android:textColor="@android:color/black"
                     android:textSize="19sp" />
 
@@ -138,7 +138,8 @@
                     style="?android:attr/ratingBarStyleSmall"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:rating="4.5" />
+                    android:stepSize="0.5"
+                    app:setRating="@{viewModel.movie != null ? viewModel.movie.rating : viewModel.tvShow.rating}" />
             </LinearLayout>
 
             <LinearLayout
@@ -146,6 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="30dp"
+                app:setStateBackground="@{viewModel.allReady}"
                 android:background="@drawable/btn_favorite"
                 android:clickable="true"
                 android:focusable="true"
@@ -163,6 +165,7 @@
                     android:layout_width="18dp"
                     android:layout_height="18dp"
                     android:paddingTop="1dp"
+                    app:setStateImage="@{viewModel.allReady}"
                     android:src="@drawable/ic_favorite" />
 
                 <TextView
@@ -170,6 +173,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_light"
                     android:paddingStart="7dp"
+                    app:setStateText="@{viewModel.allReady}"
                     android:text="@string/favorite"
                     android:textColor="@android:color/white" />
             </LinearLayout>
@@ -211,6 +215,7 @@
 
             <ImageButton
                 android:id="@+id/btn_back"
+                android:onClick="@{viewModel::backToHome}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"

@@ -1,4 +1,4 @@
-package piuwcreative.moviecatalogue.data.repository;
+package piuwcreative.moviecatalogue.data.repositories;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
@@ -19,6 +19,7 @@ public class MovieRepository {
     private MutableLiveData<ArrayList<MovieModel>> movies;
     private MutableLiveData<ArrayList<MovieModel>> searchMovies;
     private MutableLiveData<ArrayList<TvModel>> tvShows;
+    private MutableLiveData<ArrayList<TvModel>> searchTv;
 
     public static MovieRepository getInstance(){
         if (instance == null) {
@@ -31,6 +32,7 @@ public class MovieRepository {
         movies = new MutableLiveData<>();
         searchMovies = new MutableLiveData<>();
         tvShows = new MutableLiveData<>();
+        searchTv = new MutableLiveData<>();
     }
 
     public LiveData<ArrayList<MovieModel>> getSearchMovie(String query) {
@@ -48,6 +50,24 @@ public class MovieRepository {
             }
         });
         return searchMovies;
+    }
+
+    public LiveData<ArrayList<TvModel>> getSearchTv(String query) {
+        ApiMovieService.Api.getService().getTvSearch(query).enqueue(new Callback<TvResponse>() {
+            @Override
+            public void onResponse(Call<TvResponse> call, Response<TvResponse> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    searchTv.postValue(response.body().getResult());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<TvResponse> call, Throwable t) {
+
+            }
+        });
+
+        return searchTv;
     }
 
     public LiveData<ArrayList<MovieModel>> getAllMovie() {

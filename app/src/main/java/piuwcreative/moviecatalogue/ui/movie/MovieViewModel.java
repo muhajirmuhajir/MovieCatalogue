@@ -5,7 +5,7 @@ import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;
 
-import piuwcreative.moviecatalogue.data.repository.MovieRepository;
+import piuwcreative.moviecatalogue.data.repositories.MovieRepository;
 import piuwcreative.moviecatalogue.model.MovieModel;
 
 

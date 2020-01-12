@@ -1,35 +1,64 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:custom="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".ui.search.SearchFragment">
+<layout>
 
-    <androidx.appcompat.widget.SearchView
-        custom:queryHint="@string/search_hint"
-        android:id="@+id/search_badge"
+    <data>
+
+        <variable
+            name="viewmodel"
+            type="piuwcreative.moviecatalogue.ui.search.SearchViewModel" />
+    </data>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:custom="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.search.SearchFragment">
 
-    <belka.us.androidtoggleswitch.widgets.ToggleSwitch
-        android:id="@+id/toggle_switches"
-        android:layout_marginTop="20dp"
-        android:layout_below="@+id/search_badge"
-        android:layout_centerHorizontal="true"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        custom:textToggleLeft="@string/movie"
-        custom:toggleWidth="100dp"
-        custom:textToggleRight="@string/tvShow"
-        custom:activeBgColor="@color/colorPrimaryDark"
-        custom:inactiveBgColor="@color/grey"/>
+        <LinearLayout
+            android:id="@+id/search_badge"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:weightSum="10">
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:layout_below="@id/toggle_switches"
-        android:layout_marginTop="10dp"
-        android:id="@+id/rv_container"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</RelativeLayout>
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="9"
+                android:text="@={viewmodel.keyword}"
+                android:drawableEnd="@drawable/ic_search"
+                android:hint="Masukkan kata kunci" />
+
+            <Button
+                android:onClick="@{viewmodel::search}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="search" />
+        </LinearLayout>
+
+        <belka.us.androidtoggleswitch.widgets.ToggleSwitch
+            android:id="@+id/toggle_switches"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/search_badge"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            custom:activeBgColor="@color/colorPrimaryDark"
+            custom:inactiveBgColor="@color/grey"
+            custom:textToggleLeft="@string/movie"
+            custom:textToggleRight="@string/tvShow"
+            custom:toggleWidth="100dp" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/toggle_switches"
+            android:layout_marginTop="10dp" />
+    </RelativeLayout>
+</layout>

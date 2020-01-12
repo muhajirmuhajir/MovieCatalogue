@@ -47,6 +47,7 @@ public class DetailActivity extends AppCompatActivity implements OnInsertDelete 
         }
 
 
+
     }
 
 
@@ -65,6 +66,10 @@ public class DetailActivity extends AppCompatActivity implements OnInsertDelete 
         showToast("Data berhasil dihapus");
     }
 
+    @Override
+    public void onFinish() {
+        finish();
+    }
 
     private void showToast(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();

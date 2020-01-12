@@ -28,11 +28,11 @@ public interface DatabaseDao {
     @Delete
     void deleteTvShow(TvModel model);
 
-    @Query("SELECT * FROM MOVIE_TABLE")
-    LiveData<List<MovieModel>> getAllMovie();
+    @Query("SELECT * FROM movie_table ORDER BY title ASC")
+    List<MovieModel> getAllMovie();
 
-    @Query("SELECT * FROM TV_TABLE")
-    LiveData<List<TvModel>> getAllTv();
+    @Query("SELECT * FROM tv_table ORDER BY title ASC")
+    List<TvModel> getAllTv();
 
     @Query("SELECT * FROM MOVIE_TABLE WHERE id = :id")
     MovieModel getMovieById(int id);

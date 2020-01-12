@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import piuwcreative.moviecatalogue.R;
 import piuwcreative.moviecatalogue.model.MovieModel;
@@ -25,14 +26,14 @@ import static piuwcreative.moviecatalogue.utils.Const.BASE_IMAGE_URL;
 
 public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> {
     private static final String TYPE = "movie";
-    private ArrayList<MovieModel> movieModels = new ArrayList<>();
+    private List<MovieModel> movieModels = new ArrayList<>();
     private Context context;
 
     public MovieAdapter(Context context) {
         this.context = context;
     }
 
-    public void setMovieModels(ArrayList<MovieModel> movieModels) {
+    public void setMovieModels(List<MovieModel> movieModels) {
         this.movieModels = movieModels;
     }
 

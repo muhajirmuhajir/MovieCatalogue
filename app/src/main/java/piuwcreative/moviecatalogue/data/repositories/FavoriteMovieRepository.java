@@ -1,6 +1,7 @@
-package piuwcreative.moviecatalogue.data.repository;
+package piuwcreative.moviecatalogue.data.repositories;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
@@ -13,12 +14,14 @@ import piuwcreative.moviecatalogue.model.MovieModel;
 import piuwcreative.moviecatalogue.model.TvModel;
 
 public class FavoriteMovieRepository {
+    private Context context;
     private static FavoriteMovieRepository instance;
     private DatabaseDao databaseDao;
-    private LiveData<List<MovieModel>> allMovie;
-    private LiveData<List<TvModel>> allTv;
+    private List<MovieModel> allMovie;
+    private List<TvModel> allTv;
 
     public FavoriteMovieRepository(Application application) {
+        context = application;
         AppDatabase database = AppDatabase.getInstance(application);
         databaseDao = database.movieDao();
         allMovie = databaseDao.getAllMovie();
@@ -40,6 +43,7 @@ public class FavoriteMovieRepository {
 
     public void deleteMovie(MovieModel model) {
         new DeleteMovieAsyncTask(databaseDao).execute(model);
+        allMovie = databaseDao.getAllMovie();
     }
 
     public MovieModel findMovie(int id) {
@@ -59,11 +63,11 @@ public class FavoriteMovieRepository {
         return databaseDao.getTvShowById(id);
     }
 
-    public LiveData<List<MovieModel>> getAllMovie() {
+    public List<MovieModel> getAllMovie() {
         return allMovie;
     }
 
-    public LiveData<List<TvModel>> getAllTv() {
+    public List<TvModel> getAllTv() {
         return allTv;
     }
 

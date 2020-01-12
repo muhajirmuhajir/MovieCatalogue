@@ -27,6 +27,7 @@ Latest film notifications every
     <string name="release_date">Release date</string>
     <string name="rating">Rating</string>
     <string name="search_hint">Enter film/tv title</string>
+    <string name="delete">Delete</string>
 
 
 </resources>

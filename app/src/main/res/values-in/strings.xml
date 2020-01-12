@@ -27,4 +27,5 @@ jam 8 pagi</string>
     <string name="release_date">Waktu rilis</string>
     <string name="rating">Peringkat</string>
     <string name="search_hint">Masukkan judul film/tv</string>
+    <string name="delete">Hapus</string>
 </resources>
