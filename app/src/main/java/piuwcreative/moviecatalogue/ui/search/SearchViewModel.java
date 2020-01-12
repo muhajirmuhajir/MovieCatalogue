@@ -23,23 +23,28 @@ public class SearchViewModel extends ViewModel {
 
     public void init(Context context, OnSearchResultListener callback) {
         this.callback = callback;
-        repository = MovieRepository.getInstance();
+        repository = new MovieRepository(listener);
     }
 
     public void search(View view) {
         if (keyword.isEmpty()) {
             Log.i("jalanji", "isi nul");
         } else {
-            allMovie = repository.getSearchMovie(keyword);
-            allTvShow = repository.getSearchTv(keyword);
+            repository.setSearchMovie(keyword);
+            repository.setSearchTv(keyword);
         }
     }
 
-    public LiveData<ArrayList<MovieModel>> getAllMovie() {
-        return allMovie;
-    }
+    private OnSearchResultListener listener = new OnSearchResultListener() {
+        @Override
+        public void onMovieResult(ArrayList<MovieModel> models) {
+            callback.onMovieResult(models);
+        }
 
-    public LiveData<ArrayList<TvModel>> getAllTvShow() {
-        return allTvShow;
-    }
+        @Override
+        public void onTvResult(ArrayList<TvModel> models) {
+            callback.onTvResult(models);
+        }
+    };
+
 }

@@ -45,17 +45,17 @@ public class FavoriteTvFragment extends Fragment implements FavoriteTvView.View 
         super.onViewCreated(view, savedInstanceState);
         presenter = new FavoriteTvPresenter(this);
         recyclerView = view.findViewById(R.id.rv_container);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+
 
         presenter.getDataListTv(getActivity().getApplication());
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        adapter = new TvAdapter(getContext());
-        recyclerView.setAdapter(adapter);
     }
 
 
     @Override
     public void showAllTv(List<TvModel> models) {
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new TvAdapter(getContext());
+        recyclerView.setAdapter(adapter);
         adapter.setModels(models);
     }
 

@@ -77,7 +77,7 @@ public class SearchFragment extends Fragment implements OnSearchResultListener {
     }
 
     @Override
-    public void onTvResut(ArrayList<TvModel> models) {
+    public void onTvResult(ArrayList<TvModel> models) {
 
     }
 }

@@ -10,6 +10,7 @@ import piuwcreative.moviecatalogue.model.MovieModel;
 import piuwcreative.moviecatalogue.model.MovieResponse;
 import piuwcreative.moviecatalogue.model.TvModel;
 import piuwcreative.moviecatalogue.model.TvResponse;
+import piuwcreative.moviecatalogue.ui.search.OnSearchResultListener;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -20,6 +21,7 @@ public class MovieRepository {
     private MutableLiveData<ArrayList<MovieModel>> searchMovies;
     private MutableLiveData<ArrayList<TvModel>> tvShows;
     private MutableLiveData<ArrayList<TvModel>> searchTv;
+    private OnSearchResultListener callback;
 
     public static MovieRepository getInstance(){
         if (instance == null) {
@@ -35,12 +37,22 @@ public class MovieRepository {
         searchTv = new MutableLiveData<>();
     }
 
-    public LiveData<ArrayList<MovieModel>> getSearchMovie(String query) {
+    public MovieRepository(OnSearchResultListener callback) {
+        this.callback = callback;
+        movies = new MutableLiveData<>();
+        searchMovies = new MutableLiveData<>();
+        tvShows = new MutableLiveData<>();
+        searchTv = new MutableLiveData<>();
+    }
+
+
+    public void setSearchMovie(String query) {
         ApiMovieService.Api.getService().getMovieSearch(query).enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     searchMovies.postValue(response.body().getResult());
+                    callback.onMovieResult(response.body().getResult());
                 }
             }
 
@@ -49,15 +61,15 @@ public class MovieRepository {
 
             }
         });
-        return searchMovies;
     }
 
-    public LiveData<ArrayList<TvModel>> getSearchTv(String query) {
+    public void setSearchTv(String query) {
         ApiMovieService.Api.getService().getTvSearch(query).enqueue(new Callback<TvResponse>() {
             @Override
             public void onResponse(Call<TvResponse> call, Response<TvResponse> response) {
                 if (response.isSuccessful() && response.body() != null) {
                     searchTv.postValue(response.body().getResult());
+                    callback.onTvResult(response.body().getResult());
                 }
             }
 
@@ -67,7 +79,6 @@ public class MovieRepository {
             }
         });
 
-        return searchTv;
     }
 
     public LiveData<ArrayList<MovieModel>> getAllMovie() {
