@@ -9,14 +9,24 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import piuwcreative.moviecatalogue.R;
+import piuwcreative.moviecatalogue.adapter.MovieAdapter;
+import piuwcreative.moviecatalogue.adapter.TvAdapter;
+import piuwcreative.moviecatalogue.model.TvModel;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class FavoriteTvFragment extends Fragment {
-
+public class FavoriteTvFragment extends Fragment implements FavoriteTvView.View {
+    private RecyclerView recyclerView;
+    private FavoriteTvPresenter presenter;
+    private TvAdapter adapter;
 
     public FavoriteTvFragment() {
         // Required empty public constructor
@@ -33,9 +43,25 @@ public class FavoriteTvFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        presenter = new FavoriteTvPresenter(this);
+        recyclerView = view.findViewById(R.id.rv_container);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
-
+        presenter.getDataListTv(getActivity().getApplication());
+        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new TvAdapter(getContext());
+        recyclerView.setAdapter(adapter);
     }
 
 
+    @Override
+    public void showAllTv(List<TvModel> models) {
+        adapter.setModels(models);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        presenter.getDataListTv(getActivity().getApplication());
+    }
 }

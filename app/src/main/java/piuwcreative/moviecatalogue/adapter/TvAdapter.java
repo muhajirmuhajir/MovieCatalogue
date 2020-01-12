@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import piuwcreative.moviecatalogue.R;
 import piuwcreative.moviecatalogue.model.TvModel;
@@ -25,14 +26,14 @@ import static piuwcreative.moviecatalogue.utils.Const.BASE_IMAGE_URL;
 
 public class TvAdapter extends RecyclerView.Adapter<TvAdapter.ViewHolder> {
     private static final String TYPE = "tv";
-    private ArrayList<TvModel> models = new ArrayList<>();
+    private List<TvModel> models = new ArrayList<>();
     private Context context;
 
     public TvAdapter(Context context) {
         this.context = context;
     }
 
-    public void setModels(ArrayList<TvModel> models) {
+    public void setModels(List<TvModel> models) {
         this.models = models;
     }
 
