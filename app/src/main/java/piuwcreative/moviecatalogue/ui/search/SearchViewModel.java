@@ -17,19 +17,18 @@ import piuwcreative.moviecatalogue.model.TvModel;
 public class SearchViewModel extends ViewModel {
     public String keyword;
     private MovieRepository repository;
-    private LiveData<ArrayList<MovieModel>> allMovie = new MutableLiveData<>();
-    private LiveData<ArrayList<TvModel>> allTvShow = new MutableLiveData<>();
     private OnSearchResultListener callback;
 
-    public void init(Context context, OnSearchResultListener callback) {
+    public void init(OnSearchResultListener callback) {
         this.callback = callback;
         repository = new MovieRepository(listener);
     }
 
     public void search(View view) {
-        if (keyword.isEmpty()) {
-            Log.i("jalanji", "isi nul");
+        if (keyword == null) {
+            callback.onEmptyField();
         } else {
+            callback.onLoadStarted();
             repository.setSearchMovie(keyword);
             repository.setSearchTv(keyword);
         }
@@ -44,6 +43,21 @@ public class SearchViewModel extends ViewModel {
         @Override
         public void onTvResult(ArrayList<TvModel> models) {
             callback.onTvResult(models);
+        }
+
+        @Override
+        public void onEmptyResult() {
+            callback.onEmptyResult();
+        }
+
+        @Override
+        public void onEmptyField() {
+
+        }
+
+        @Override
+        public void onLoadStarted() {
+
         }
     };
 

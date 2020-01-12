@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
     <SwitchPreference
+        android:key="reminder"
         android:icon="@drawable/ic_daily_reminder"
         android:summary="@string/daily_description"
         android:title="@string/daily_reminder" />
     <SwitchPreference
+        android:key="news"
         android:icon="@drawable/ic_new_movies"
         android:summary="@string/new_film_desc"
         android:title="@string/new_film" />

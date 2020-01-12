@@ -10,4 +10,9 @@ public interface OnSearchResultListener {
 
     void onTvResult(ArrayList<TvModel> models);
 
+    void onEmptyResult();
+
+    void onEmptyField();
+
+    void onLoadStarted();
 }
