@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,7 +19,6 @@ import com.facebook.shimmer.ShimmerFrameLayout;
 import java.util.ArrayList;
 
 import piuwcreative.moviecatalogue.R;
-import piuwcreative.moviecatalogue.adapter.MovieAdapter;
 import piuwcreative.moviecatalogue.adapter.TvAdapter;
 import piuwcreative.moviecatalogue.model.TvModel;
 
@@ -28,7 +26,7 @@ import piuwcreative.moviecatalogue.model.TvModel;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TvShowFragment extends Fragment implements OnTvLoad{
+public class TvShowFragment extends Fragment implements OnTvLoad {
     private TvShowViewModel viewModel;
     private TvAdapter adapter;
     private ShimmerFrameLayout shimmerFrameLayout;

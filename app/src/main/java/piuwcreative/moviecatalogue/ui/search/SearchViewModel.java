@@ -1,11 +1,7 @@
 package piuwcreative.moviecatalogue.ui.search;
 
-import android.content.Context;
-import android.util.Log;
 import android.view.View;
 
-import androidx.lifecycle.LiveData;
-import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 import java.util.ArrayList;

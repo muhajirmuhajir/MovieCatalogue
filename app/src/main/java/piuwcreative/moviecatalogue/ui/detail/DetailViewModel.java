@@ -1,7 +1,6 @@
 package piuwcreative.moviecatalogue.ui.detail;
 
 import android.app.Application;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -44,9 +43,7 @@ public class DetailViewModel extends ViewModel {
     public void setAllReady(String type, int id) {
         if (type.equals("movie")) {
             MovieModel model = favoriteMovieRepository.findMovie(id);
-            if (model != null) {
-                Log.i("jalanji", model.getTitle());
-            }
+
             allReady = model != null;
         } else if (type.equals("tv")) {
             TvModel model = favoriteMovieRepository.findTv(id);
@@ -78,7 +75,7 @@ public class DetailViewModel extends ViewModel {
     }
 
     public void addFavorite(View view) {
-        Log.i("jalanji", "method add");
+
         if (movie != null) {
             favoriteMovieRepository.insertMovie(movie);
             callback.insertSuccess();
@@ -90,7 +87,7 @@ public class DetailViewModel extends ViewModel {
     }
 
     public void deleteFavorite(View view) {
-        Log.i("jalanji", "method delete");
+
         if (movie != null) {
             favoriteMovieRepository.deleteMovie(movie);
             callback.deleteSuccess();

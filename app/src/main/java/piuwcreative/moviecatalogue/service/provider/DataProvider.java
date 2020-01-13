@@ -5,7 +5,6 @@ import android.content.ContentValues;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
-import android.util.Log;
 
 import java.util.Objects;
 
@@ -75,7 +74,7 @@ public class DataProvider extends ContentProvider {
                 break;
             case MOVIE_ID:
                 cursor = null;
-               // cursor = queryHelper.queryMovieById(uri.getLastPathSegment());
+                // cursor = queryHelper.queryMovieById(uri.getLastPathSegment());
                 break;
             case TV:
                 cursor = database.movieDao().getAllTvProvider();
@@ -85,7 +84,6 @@ public class DataProvider extends ContentProvider {
                 //cursor = queryHelper.queryTvById(uri.getLastPathSegment());
                 break;
             default:
-                Log.i("checking_bro1", "masuk di default");
                 cursor = null;
         }
 

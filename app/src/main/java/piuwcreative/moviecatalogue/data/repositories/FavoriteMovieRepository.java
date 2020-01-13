@@ -4,8 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.os.AsyncTask;
 
-import androidx.lifecycle.LiveData;
-
 import java.util.List;
 
 import piuwcreative.moviecatalogue.data.database.AppDatabase;

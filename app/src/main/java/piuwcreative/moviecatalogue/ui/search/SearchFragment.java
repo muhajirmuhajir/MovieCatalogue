@@ -2,7 +2,6 @@ package piuwcreative.moviecatalogue.ui.search;
 
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -29,7 +27,6 @@ import piuwcreative.moviecatalogue.adapter.TvAdapter;
 import piuwcreative.moviecatalogue.databinding.FragmentSearchBinding;
 import piuwcreative.moviecatalogue.model.MovieModel;
 import piuwcreative.moviecatalogue.model.TvModel;
-import piuwcreative.moviecatalogue.ui.movie.MovieViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -70,7 +67,6 @@ public class SearchFragment extends Fragment implements OnSearchResultListener {
         super.onViewCreated(view, savedInstanceState);
 
         ToggleSwitch toggleSwitch = dataBinding.toggleSwitches;
-
 
 
         movieContainer = dataBinding.rvContainer;
@@ -161,7 +157,7 @@ public class SearchFragment extends Fragment implements OnSearchResultListener {
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putParcelableArrayList(EXTRA_MOVIE,movieModels);
-        outState.putParcelableArrayList(EXTRA_TV,tvModels);
+        outState.putParcelableArrayList(EXTRA_MOVIE, movieModels);
+        outState.putParcelableArrayList(EXTRA_TV, tvModels);
     }
 }

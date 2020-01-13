@@ -1,6 +1,5 @@
 package piuwcreative.moviecatalogue.model;
 
-import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
@@ -74,7 +73,6 @@ public class MovieModel implements Parcelable, SerializedName {
         rating = in.readDouble();
         voteCount = in.readInt();
     }
-
 
 
     @NonNull

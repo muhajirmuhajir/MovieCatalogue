@@ -1,7 +1,6 @@
 package piuwcreative.moviecatalogue.service.broadcast;
 
 import android.content.Context;
-import android.util.Log;
 
 import piuwcreative.moviecatalogue.data.network.ApiMovieService;
 import piuwcreative.moviecatalogue.model.MovieResponse;
@@ -26,10 +25,10 @@ public class NotificationPresenter implements NotificationView.Presenter {
         ApiMovieService.Api.getService().getTodayMovieRelease(date, date).enqueue(new Callback<MovieResponse>() {
             @Override
             public void onResponse(Call<MovieResponse> call, Response<MovieResponse> response) {
-                Log.i("cekking", "movie on presenter");
+
                 if (response.isSuccessful() && response.body() != null) {
                     view.setMovie(context, notifId, response.body().getResult());
-                    Log.i("cekking", "responds end");
+
                 }
             }
 

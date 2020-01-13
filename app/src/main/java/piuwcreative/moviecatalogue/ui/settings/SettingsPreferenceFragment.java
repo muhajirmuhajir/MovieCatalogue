@@ -2,7 +2,6 @@ package piuwcreative.moviecatalogue.ui.settings;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
@@ -56,7 +55,7 @@ public class SettingsPreferenceFragment extends PreferenceFragmentCompat impleme
         newsReminder = findPreference(NEWS);
 
         receiver = new NotificationReceiver();
-        Log.i("cekking", "notification init done");
+
     }
 
     @Override
@@ -66,11 +65,11 @@ public class SettingsPreferenceFragment extends PreferenceFragmentCompat impleme
             dailyReminder.setChecked(state);
 
             if (state) {
-                Log.i("cekking", "starting daily ");
+
                 String time = "07:00";
                 receiver.setEnableNotificationService(getContext(), TYPE_DAILY_REMINDER, time);
             } else {
-                Log.i("cekking", "stopping daily ");
+
                 receiver.setDisableNotification(getContext(), TYPE_DAILY_REMINDER);
             }
 
@@ -79,11 +78,11 @@ public class SettingsPreferenceFragment extends PreferenceFragmentCompat impleme
             boolean state = sharedPreferences.getBoolean(NEWS, false);
             newsReminder.setChecked(state);
             if (state) {
-                Log.i("cekking", "starting news ");
+
                 String time = "08:00";
                 receiver.setEnableNotificationService(getContext(), TYPE_NEW_MOVIE, time);
             } else {
-                Log.i("cekking", "stopping daily ");
+
                 receiver.setDisableNotification(getContext(), TYPE_NEW_MOVIE);
             }
         }

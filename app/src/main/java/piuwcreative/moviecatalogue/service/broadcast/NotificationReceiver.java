@@ -11,7 +11,6 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
-import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
@@ -40,10 +39,8 @@ public class NotificationReceiver extends BroadcastReceiver implements Notificat
 
         if (type.equals(TYPE_DAILY_REMINDER)) {
             showDailyReminderNotification(context, id);
-            Log.i("cekking", "start daily notification");
 
         } else if (type.equals(TYPE_NEW_MOVIE)) {
-            Log.i("cekking", "start-new movie");
             Date date = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
             String currentDate = dateFormat.format(date);
@@ -51,7 +48,7 @@ public class NotificationReceiver extends BroadcastReceiver implements Notificat
             NotificationPresenter presenter = new NotificationPresenter(context, id, this);
             presenter.requestMovies(currentDate);
 
-            Log.i("cekking", "end-new movie");
+
         }
     }
 
