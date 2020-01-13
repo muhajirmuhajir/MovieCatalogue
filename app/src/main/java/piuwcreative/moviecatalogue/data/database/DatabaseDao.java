@@ -1,6 +1,8 @@
 package piuwcreative.moviecatalogue.data.database;
 
 
+import android.database.Cursor;
+
 import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
@@ -45,4 +47,10 @@ public interface DatabaseDao {
 
     @Query("SELECT * FROM TV_TABLE WHERE title LIKE :title")
     LiveData<List<TvModel>> getTvShowByTitle(String title);
+
+    @Query("SELECT * FROM movie_table ORDER BY title ASC")
+    Cursor getAllMovieProvider();
+
+    @Query("SELECT * FROM tv_table ORDER BY title ASC")
+    Cursor getAllTvProvider();
 }
