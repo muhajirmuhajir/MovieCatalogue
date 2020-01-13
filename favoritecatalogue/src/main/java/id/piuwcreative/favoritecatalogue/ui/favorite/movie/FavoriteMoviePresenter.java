@@ -1,8 +1,11 @@
 package id.piuwcreative.favoritecatalogue.ui.favorite.movie;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
+import android.content.ContentProviderClient;
 import android.database.Cursor;
 import android.net.Uri;
+import android.os.RemoteException;
 
 import id.piuwcreative.favoritecatalogue.utils.MappingHelper;
 
@@ -23,10 +26,17 @@ public class FavoriteMoviePresenter implements MovieFavoriteView.Presenter {
 
     @Override
     public void getDataListMovie(Application application) {
-        Cursor cursor = application.getContentResolver().query(CONTENT_URI, null, null, null, null, null);
-
-        if (cursor != null) {
-            view.showAllMovie(MappingHelper.cursorToMovies(cursor));
+        @SuppressLint("Recycle") ContentProviderClient client = application.getContentResolver().acquireContentProviderClient(CONTENT_URI);
+        Cursor cursor = null;
+        try {
+            cursor = client.query(CONTENT_URI, null, null, null, null, null);
+            if (cursor != null) {
+                view.showAllMovie(MappingHelper.cursorToMovies(cursor));
+            }
+        } catch (RemoteException e) {
+            e.printStackTrace();
         }
+
+
     }
 }

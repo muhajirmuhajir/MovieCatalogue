@@ -47,16 +47,17 @@ public class FavoriteMovieFragment extends Fragment implements MovieFavoriteView
         adapter = new MovieAdapter(getContext());
         recyclerView = view.findViewById(R.id.rv_container);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        presenter.getDataListMovie(getActivity().getApplication());
-
         recyclerView.setAdapter(adapter);
+
+       presenter.getDataListMovie(getActivity().getApplication());
+
     }
 
 
     @Override
     public void onResume() {
         super.onResume();
-        presenter.getDataListMovie(getActivity().getApplication());
+       presenter.getDataListMovie(getActivity().getApplication());
     }
 
     @Override

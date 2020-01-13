@@ -117,6 +117,7 @@ public class SearchFragment extends Fragment implements OnSearchResultListener {
             tvModels = new ArrayList<>(models);
         }
         showLoading(false);
+        changeTab(dataBinding.toggleSwitches.getCheckedTogglePosition());
     }
 
     @Override
@@ -132,6 +133,7 @@ public class SearchFragment extends Fragment implements OnSearchResultListener {
     @Override
     public void onLoadStarted() {
         showLoading(true);
+
     }
 
     public void changeTab(int index) {
@@ -148,6 +150,8 @@ public class SearchFragment extends Fragment implements OnSearchResultListener {
         if (state) {
             shimmerFrameLayout.setVisibility(View.VISIBLE);
             shimmerFrameLayout.startShimmer();
+            tvContainer.setVisibility(View.GONE);
+            movieContainer.setVisibility(View.GONE);
         } else {
             shimmerFrameLayout.stopShimmer();
             shimmerFrameLayout.setVisibility(View.GONE);

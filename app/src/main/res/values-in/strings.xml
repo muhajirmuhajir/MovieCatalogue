@@ -33,4 +33,5 @@ jam 8 pagi</string>
     <string name="rating">Peringkat</string>
     <string name="search_hint">Masukkan judul film/tv</string>
     <string name="delete">Hapus</string>
+    <string name="masukkan_kata_kunci">Masukkan kata kunci</string>
 </resources>

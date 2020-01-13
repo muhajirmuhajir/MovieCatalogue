@@ -35,6 +35,7 @@ public class TvAdapter extends RecyclerView.Adapter<TvAdapter.ViewHolder> {
 
     public void setModels(List<TvModel> models) {
         this.models = models;
+        notifyDataSetChanged();
     }
 
     @NonNull

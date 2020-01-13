@@ -16,8 +16,20 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         tools:context=".ui.search.SearchFragment">
-
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="28sp"
+            android:layout_marginTop="27dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="20dp"
+            android:layout_marginBottom="15dp"
+            android:textColor="@android:color/black"
+            android:fontFamily="@font/roboto_light"
+            android:text="@string/search"/>
         <LinearLayout
+            android:layout_below="@id/header"
             android:id="@+id/search_badge"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -32,14 +44,14 @@
                 android:layout_weight="9"
                 android:text="@={viewmodel.keyword}"
                 android:drawableEnd="@drawable/ic_search"
-                android:hint="Masukkan kata kunci" />
+                android:hint="@string/masukkan_kata_kunci" />
 
             <Button
                 android:onClick="@{viewmodel::search}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="search" />
+                android:text="@string/search" />
         </LinearLayout>
 
         <belka.us.androidtoggleswitch.widgets.ToggleSwitch

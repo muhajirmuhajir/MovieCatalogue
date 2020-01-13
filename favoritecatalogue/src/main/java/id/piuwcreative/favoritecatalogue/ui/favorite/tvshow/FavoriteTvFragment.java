@@ -49,14 +49,14 @@ public class FavoriteTvFragment extends Fragment implements FavoriteTvView.View 
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(adapter);
-        presenter.getDataListTv(getActivity().getApplication());
+       presenter.getDataListTv(getActivity().getApplication());
     }
 
 
     @Override
     public void onResume() {
         super.onResume();
-        presenter.getDataListTv(getActivity().getApplication());
+       presenter.getDataListTv(getActivity().getApplication());
     }
 
     @Override

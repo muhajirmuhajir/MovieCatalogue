@@ -34,6 +34,7 @@ Latest film notifications every
     <string name="delete">Delete</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="masukkan_kata_kunci">Enter the keyword</string>
 
 
 </resources>

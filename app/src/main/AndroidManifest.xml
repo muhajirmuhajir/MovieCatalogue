@@ -9,6 +9,14 @@
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <permission
+        android:name="piuwcreative.moviecatalogue.content.READ"
+        android:protectionLevel="normal"/>
+    <permission
+        android:name="piuwcreative.moviecatalogue.content.WRITE"
+        android:protectionLevel="normal"/>
+
+
     <dist:module dist:instant="true" />
 
     <application
@@ -35,17 +43,18 @@
             android:name=".service.provider.DataProvider"
             android:authorities="piuwcreative.moviecatalogue"
             android:enabled="true"
-            android:multiprocess="true"
-            android:permission="piuwcreative.moviecatalogue.READ_WRITE"
-            android:exported="true" />
+            android:exported="true"
+            android:readPermission="piuwcreative.moviecatalogue.content.READ"
+            android:writePermission="piuwcreative.moviecatalogue.content.WRITE" />
 
         <receiver
             android:name=".service.broadcast.NotificationReceiver"
             android:enabled="true"
             android:exported="true" />
 
-        <service android:name=".service.widget.StackWidgetService"
-            android:permission="android.permission.BIND_REMOTEVIEWS"/>
+        <service
+            android:name=".service.widget.StackWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <activity android:name=".ui.SplashScreen">
             <intent-filter>

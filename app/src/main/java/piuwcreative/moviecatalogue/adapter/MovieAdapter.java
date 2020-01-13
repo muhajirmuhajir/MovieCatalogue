@@ -35,6 +35,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     public void setMovieModels(List<MovieModel> movieModels) {
         this.movieModels = movieModels;
+        notifyDataSetChanged();
     }
 
     @NonNull

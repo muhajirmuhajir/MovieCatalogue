@@ -33,6 +33,7 @@ public class MappingHelper {
             TvModel tvModel = new TvModel(cursor);
             models.add(tvModel);
         }
+        cursor.close();
         return models;
     }
 }

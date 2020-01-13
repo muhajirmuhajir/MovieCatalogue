@@ -2,4 +2,8 @@
 <resources>
     <string name="key_daily" translatable="false">1234daily</string>
     <string name="key_news" translatable="false">1234news</string>
+
+    <string name="app_read" translatable="false">piuwcreative.moviecatalogue.content.READ</string>
+    <string name="app_write" translatable="false">piuwcreative.moviecatalogue.content.WRITE</string>
+
 </resources>
