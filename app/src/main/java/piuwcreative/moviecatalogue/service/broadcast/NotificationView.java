@@ -1,4 +1,4 @@
-package piuwcreative.moviecatalogue.broadcast;
+package piuwcreative.moviecatalogue.service.broadcast;
 
 import android.content.Context;
 

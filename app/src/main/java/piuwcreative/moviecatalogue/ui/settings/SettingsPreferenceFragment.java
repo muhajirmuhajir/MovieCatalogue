@@ -2,15 +2,16 @@ package piuwcreative.moviecatalogue.ui.settings;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.preference.PreferenceFragmentCompat;
 import androidx.preference.SwitchPreference;
 
 import piuwcreative.moviecatalogue.R;
-import piuwcreative.moviecatalogue.broadcast.NotificationReceiver;
+import piuwcreative.moviecatalogue.service.broadcast.NotificationReceiver;
 
-import static piuwcreative.moviecatalogue.broadcast.NotificationReceiver.TYPE_DAILY_REMINDER;
-import static piuwcreative.moviecatalogue.broadcast.NotificationReceiver.TYPE_NEW_MOVIE;
+import static piuwcreative.moviecatalogue.service.broadcast.NotificationReceiver.TYPE_DAILY_REMINDER;
+import static piuwcreative.moviecatalogue.service.broadcast.NotificationReceiver.TYPE_NEW_MOVIE;
 
 public class SettingsPreferenceFragment extends PreferenceFragmentCompat implements SharedPreferences.OnSharedPreferenceChangeListener {
     private SwitchPreference dailyReminder;
@@ -45,7 +46,6 @@ public class SettingsPreferenceFragment extends PreferenceFragmentCompat impleme
         dailyReminder.setChecked(sh.getBoolean(DAILY, false));
         newsReminder.setChecked(sh.getBoolean(NEWS, false));
 
-        setServiceEnabled(sh.getBoolean(DAILY, false), sh.getBoolean(NEWS, false));
     }
 
     private void init() {
@@ -56,35 +56,38 @@ public class SettingsPreferenceFragment extends PreferenceFragmentCompat impleme
         newsReminder = findPreference(NEWS);
 
         receiver = new NotificationReceiver();
-
+        Log.i("cekking", "notification init done");
     }
 
     @Override
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String s) {
         if (s.equals(DAILY)) {
-            dailyReminder.setChecked(sharedPreferences.getBoolean(DAILY, false));
+            boolean state = sharedPreferences.getBoolean(DAILY, false);
+            dailyReminder.setChecked(state);
+
+            if (state) {
+                Log.i("cekking", "starting daily ");
+                String time = "07:00";
+                receiver.setEnableNotificationService(getContext(), TYPE_DAILY_REMINDER, time);
+            } else {
+                Log.i("cekking", "stopping daily ");
+                receiver.setDisableNotification(getContext(), TYPE_DAILY_REMINDER);
+            }
+
         }
         if (s.equals(NEWS)) {
-            newsReminder.setChecked(sharedPreferences.getBoolean(NEWS, false));
+            boolean state = sharedPreferences.getBoolean(NEWS, false);
+            newsReminder.setChecked(state);
+            if (state) {
+                Log.i("cekking", "starting news ");
+                String time = "08:00";
+                receiver.setEnableNotificationService(getContext(), TYPE_NEW_MOVIE, time);
+            } else {
+                Log.i("cekking", "stopping daily ");
+                receiver.setDisableNotification(getContext(), TYPE_NEW_MOVIE);
+            }
         }
 
-        setServiceEnabled(sharedPreferences.getBoolean(DAILY, false), sharedPreferences.getBoolean(NEWS, false));
-    }
-
-    private void setServiceEnabled(boolean daily, boolean news) {
-        if (daily) {
-            String time = "07:00";
-            receiver.setEnableNotificationService(getContext(),TYPE_DAILY_REMINDER,time);
-        } else {
-            receiver.setDisableNotification(getContext(),TYPE_DAILY_REMINDER);
-        }
-
-        if (news) {
-            String time = "08:00";
-            receiver.setEnableNotificationService(getContext(), TYPE_NEW_MOVIE, time);
-        } else {
-            receiver.setDisableNotification(getContext(), TYPE_NEW_MOVIE);
-        }
     }
 
 

@@ -18,10 +18,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <receiver
-            android:name=".broadcast.NotificationReceiver"
+        <provider
+            android:name=".service.provider.DataProvider"
+            android:authorities="piuwcreative.moviecatalogue"
             android:enabled="true"
-            android:exported="true"></receiver>
+            android:exported="true"></provider>
+
+        <receiver
+            android:name=".service.broadcast.NotificationReceiver"
+            android:enabled="true"
+            android:exported="true" />
 
         <activity android:name=".ui.SplashScreen">
             <intent-filter>
@@ -35,7 +41,7 @@
             android:parentActivityName=".ui.MainActivity" />
         <activity
             android:name=".ui.MainActivity"
-            android:launchMode="singleTop"></activity>
+            android:launchMode="singleTop" />
     </application>
 
 </manifest>

@@ -1,4 +1,4 @@
-package piuwcreative.moviecatalogue.broadcast;
+package piuwcreative.moviecatalogue.service.broadcast;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
+import android.util.Log;
 
 import androidx.core.app.NotificationCompat;
 
@@ -39,13 +40,18 @@ public class NotificationReceiver extends BroadcastReceiver implements Notificat
 
         if (type.equals(TYPE_DAILY_REMINDER)) {
             showDailyReminderNotification(context, id);
+            Log.i("cekking", "start daily notification");
+
         } else if (type.equals(TYPE_NEW_MOVIE)) {
+            Log.i("cekking", "start-new movie");
             Date date = new Date();
             SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
             String currentDate = dateFormat.format(date);
 
             NotificationPresenter presenter = new NotificationPresenter(context, id, this);
             presenter.requestMovies(currentDate);
+
+            Log.i("cekking", "end-new movie");
         }
     }
 
@@ -60,7 +66,7 @@ public class NotificationReceiver extends BroadcastReceiver implements Notificat
                     notifId++;
                 }
             }
-        });
+        }).start();
     }
 
     public void setEnableNotificationService(Context context, String type, String time) {
@@ -73,7 +79,7 @@ public class NotificationReceiver extends BroadcastReceiver implements Notificat
         calendar.set(Calendar.HOUR_OF_DAY, Integer.parseInt(times[0]));
         calendar.set(Calendar.MINUTE, Integer.parseInt(times[1]));
         calendar.set(Calendar.SECOND, 0);
-        int requestCode = type.equals(TYPE_DAILY_REMINDER) ? 100 : 101;
+        int requestCode = type.equals(TYPE_DAILY_REMINDER) ? 102 : 103;
         PendingIntent pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, 0);
         if (alarmManager != null) {
             alarmManager.setInexactRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), AlarmManager.INTERVAL_DAY, pendingIntent);
