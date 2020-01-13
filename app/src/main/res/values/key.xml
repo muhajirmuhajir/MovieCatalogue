@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="key_daily" translatable="false">1234daily</string>
+    <string name="key_news" translatable="false">1234news</string>
+</resources>

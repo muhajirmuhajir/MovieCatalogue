@@ -24,6 +24,8 @@ public interface ApiMovieService {
     @GET("search/tv?api_key="+API_KEY +"&language=en-EN")
     Call<TvResponse> getTvSearch(@Query("query") String query);
 
+    @GET("discover/movie?api_key="+API_KEY)
+    Call<MovieResponse> getTodayMovieRelease(@Query("primary_release_date.gte") String releaseDateGte,@Query("primary_release_date.lte") String releaseDateLte);
 
     class Api {
         private static final String BASE_URL = "https://api.themoviedb.org/3/";

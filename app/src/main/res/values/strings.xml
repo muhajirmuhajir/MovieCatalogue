@@ -2,6 +2,10 @@
     <string name="app_name">MovieCatalogue</string>
     <string name="decription">Once home to the most advanced civilization on Earth, Atlantis is now an underwater kingdom ruled by the power-hungry King Orm. With a vast army at his disposal, Orm plans to conquer the remaining oceanic people and then the surface world. Standing in his way is Arthur Curry, Orm\'s half-human, half-Atlantean brother and true heir to the throne.</string>
 
+    <string name="notif_title">Movie Catalogue</string>
+    <string name="notif_text">Something new, lets check!</string>
+
+    <string name="news_title">New Movie</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="movie">Movies</string>

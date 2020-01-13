@@ -1,7 +1,5 @@
 package piuwcreative.moviecatalogue.data.repositories;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 
@@ -25,7 +23,7 @@ public class MovieRepository {
     private MutableLiveData<ArrayList<TvModel>> searchTv;
     private OnSearchResultListener callback;
 
-    public static MovieRepository getInstance(){
+    public static MovieRepository getInstance() {
         if (instance == null) {
             instance = new MovieRepository();
         }

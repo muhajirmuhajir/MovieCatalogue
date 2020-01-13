@@ -3,6 +3,11 @@
     <string name="app_name">Catalog Film</string>
     <string name="decription">Once home to the most advanced civilization on Earth, Atlantis is now an underwater kingdom ruled by the power-hungry King Orm. With a vast army at his disposal, Orm plans to conquer the remaining oceanic people and then the surface world. Standing in his way is Arthur Curry, Orm\'s half-human, half-Atlantean brother and true heir to the throne.</string>
 
+    <string name="notif_title">Movie Catalogue</string>
+    <string name="notif_text">Ada yang baru nih, ayo cek!</string>
+
+    <string name="news_title">Film Baru</string>
+
     <string name="movie">Film</string>
     <string name="tvShow">Acara Tv</string>
 

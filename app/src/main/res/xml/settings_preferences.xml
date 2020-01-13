@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <SwitchPreference
-        android:key="reminder"
+        android:defaultValue="true"
         android:icon="@drawable/ic_daily_reminder"
+        android:key="@string/key_daily"
         android:summary="@string/daily_description"
         android:title="@string/daily_reminder" />
     <SwitchPreference
-        android:key="news"
         android:icon="@drawable/ic_new_movies"
+        android:key="@string/key_news"
         android:summary="@string/new_film_desc"
-        android:title="@string/new_film" />
+        android:title="@string/new_film"
+        app:defaultValue="false" />
 </PreferenceScreen>
