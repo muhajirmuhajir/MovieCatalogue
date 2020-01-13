@@ -1,59 +1,38 @@
-package piuwcreative.moviecatalogue.model;
+package id.piuwcreative.favoritecatalogue.model;
 
-import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
-import androidx.room.ColumnInfo;
-import androidx.room.Entity;
-import androidx.room.Ignore;
-import androidx.room.PrimaryKey;
 
-import com.google.gson.annotations.SerializedName;
 
-import java.lang.annotation.Annotation;
+public class MovieModel implements Parcelable {
 
-@Entity(tableName = "tv_table")
-public class TvModel implements SerializedName, Parcelable {
-    @PrimaryKey()
-    @SerializedName("id")
-    @NonNull
     private int id;
 
-    @SerializedName("name")
-    @ColumnInfo(name = "title")
+
     private String title;
 
-    @SerializedName("overview")
-    @ColumnInfo(name = "overview")
     private String overview;
 
-    @SerializedName("first_air_date")
-    @ColumnInfo(name = "release_date")
     private String releseDate;
 
-    @SerializedName("poster_path")
-    @ColumnInfo(name = "poster_path")
+
     private String poster;
 
-    @SerializedName("backdrop_path")
-    @ColumnInfo(name = "backdrop_path")
+
     private String backdrop;
 
-    @SerializedName("vote_average")
-    @ColumnInfo(name = "vote_average")
     private double rating;
 
-    @SerializedName("vote_count")
-    @ColumnInfo(name = "vote_count")
+
     private int voteCount;
 
-    public TvModel() {
+    public MovieModel() {
     }
 
-    @Ignore
-    public TvModel(int id, String title, String overview, String releseDate, String poster, String backdrop, double rating, int voteCount) {
+
+    public MovieModel(int id, String title, String overview, String releseDate, String poster, String backdrop, double rating, int voteCount) {
         this.id = id;
         this.title = title;
         this.overview = overview;
@@ -64,7 +43,7 @@ public class TvModel implements SerializedName, Parcelable {
         this.voteCount = voteCount;
     }
 
-    protected TvModel(Parcel in) {
+    protected MovieModel(Parcel in) {
         id = in.readInt();
         title = in.readString();
         overview = in.readString();
@@ -75,27 +54,10 @@ public class TvModel implements SerializedName, Parcelable {
         voteCount = in.readInt();
     }
 
-    public TvModel(Cursor cursor) {
-        setId(cursor.getInt(cursor.getColumnIndexOrThrow("id")));
-    }
-
-    public static final Creator<TvModel> CREATOR = new Creator<TvModel>() {
-        @Override
-        public TvModel createFromParcel(Parcel in) {
-            return new TvModel(in);
-        }
-
-        @Override
-        public TvModel[] newArray(int size) {
-            return new TvModel[size];
-        }
-    };
-
     @NonNull
     public int getId() {
         return id;
     }
-
 
     public void setId(@NonNull int id) {
         this.id = id;
@@ -157,20 +119,17 @@ public class TvModel implements SerializedName, Parcelable {
         this.voteCount = voteCount;
     }
 
-    @Override
-    public String value() {
-        return null;
-    }
+    public static final Creator<MovieModel> CREATOR = new Creator<MovieModel>() {
+        @Override
+        public MovieModel createFromParcel(Parcel in) {
+            return new MovieModel(in);
+        }
 
-    @Override
-    public String[] alternate() {
-        return new String[0];
-    }
-
-    @Override
-    public Class<? extends Annotation> annotationType() {
-        return null;
-    }
+        @Override
+        public MovieModel[] newArray(int size) {
+            return new MovieModel[size];
+        }
+    };
 
     @Override
     public int describeContents() {
@@ -188,5 +147,6 @@ public class TvModel implements SerializedName, Parcelable {
         parcel.writeDouble(rating);
         parcel.writeInt(voteCount);
     }
-}
 
+
+}

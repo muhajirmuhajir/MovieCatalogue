@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Catalog Film</string>
+    <string name="decription">Once home to the most advanced civilization on Earth, Atlantis is now an underwater kingdom ruled by the power-hungry King Orm. With a vast army at his disposal, Orm plans to conquer the remaining oceanic people and then the surface world. Standing in his way is Arthur Curry, Orm\'s half-human, half-Atlantean brother and true heir to the throne.</string>
+
+    <string name="notif_title">Movie Catalogue</string>
+    <string name="notif_text">Ada yang baru nih, ayo cek!</string>
+
+    <string name="news_title">Film Baru</string>
+
+    <string name="movie">Film</string>
+    <string name="tvShow">Acara Tv</string>
+
+    <string name="sinopsis">SINOPSIS</string>
+
+    <string name="favorite">Favorit</string>
+
+    <string name="no_favorite_movie">Tidak ada film favorit</string>
+    <string name="no_favorite_tv">Tidak ada tv favorit</string>
+    <string name="new_film">Pemberitahuan film baru</string>
+    <string name="daily_reminder">Pengingat tiap hari</string>
+    <string name="movie_discovery">Daftar Film</string>
+    <string name="tv_show_discovery">Daftar Acara Tv</string>
+    <string name="search">Cari</string>
+    <string name="settings">Pengaturan</string>
+    <string name="daily_description">jika diaktifkan maka anda akan menerima
+notifikasi untuk membuka aplikasi setiap
+jam 7 pagi</string>
+    <string name="new_film_desc">jika diaktifkan maka anda akan menerima
+notifikasi film terbaru setiap
+jam 8 pagi</string>
+    <string name="release_date">Waktu rilis</string>
+    <string name="rating">Peringkat</string>
+    <string name="search_hint">Masukkan judul film/tv</string>
+    <string name="delete">Hapus</string>
+    <string name="favorite_movie_tv">Favorit Film dan Tv</string>
+</resources>

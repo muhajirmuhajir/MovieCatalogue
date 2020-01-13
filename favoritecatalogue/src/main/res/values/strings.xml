@@ -1,3 +1,40 @@
 <resources>
-    <string name="app_name">FavoriteCatalogue</string>
+    <string name="app_name">MovieCatalogue</string>
+    <string name="decription">Once home to the most advanced civilization on Earth, Atlantis is now an underwater kingdom ruled by the power-hungry King Orm. With a vast army at his disposal, Orm plans to conquer the remaining oceanic people and then the surface world. Standing in his way is Arthur Curry, Orm\'s half-human, half-Atlantean brother and true heir to the throne.</string>
+
+    <string name="notif_title">Movie Catalogue</string>
+    <string name="notif_text">Something new, lets check!</string>
+
+    <string name="news_title">New Movie</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="movie">Movies</string>
+    <string name="tvShow">Tv Show</string>
+
+    <string name="sinopsis">OVERVIEW</string>
+
+
+    <string name="favorite">Favorite</string>
+    <string name="no_favorite_movie">No Favorite Movie</string>
+    <string name="no_favorite_tv">No Favorite Tv Show</string>
+    <string name="new_film">New film notification</string>
+    <string name="daily_reminder">Daily Reminder</string>
+    <string name="movie_discovery">Movie Discovery</string>
+    <string name="tv_show_discovery">Tv Show Discovery</string>
+
+    <string name="search">Search</string>
+    <string name="settings">Settings</string>
+    <string name="daily_description">if activated then you will receive notification to open each application at 7 am</string>
+    <string name="new_film_desc">if activated then you will receive
+Latest film notifications every
+8 o\'clock in the morning</string>
+    <string name="release_date">Release date</string>
+    <string name="rating">Rating</string>
+    <string name="search_hint">Enter film/tv title</string>
+    <string name="delete">Delete</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
+    <string name="favorite_movie_tv">Favorite Movie and Tv</string>
+
+
 </resources>
